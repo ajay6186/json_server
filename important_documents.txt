@@ -1,0 +1,69 @@
+If you encounter an error stating "Cannot find module 'json-server'" when trying to run or set up JSON Server, it typically indicates that the `json-server` package hasn't been installed in your project or globally on your system. Here’s how you can troubleshoot and resolve this issue:
+
+### 1. Install JSON Server Locally
+
+First, ensure that you have installed `json-server` locally within your project directory. If not, you can install it using npm:
+
+```bash
+npm install json-server --save-dev
+```
+
+This command installs `json-server` as a development dependency (`--save-dev` flag), which means it will be listed in your `package.json` file under `devDependencies`.
+
+### 2. Verify Installation
+
+After installation, check that `json-server` appears in your `package.json` file:
+
+```json
+"devDependencies": {
+  "json-server": "^0.16.3"
+}
+```
+
+If it's not listed, reinstall `json-server` using `npm install json-server --save-dev`.
+
+### 3. Check `node_modules` Directory
+
+Verify that the `json-server` module exists in your `node_modules` directory within your project. If it’s missing, reinstall it to ensure all dependencies are correctly installed:
+
+```bash
+npm install
+```
+
+This command will reinstall all dependencies listed in your `package.json`, including `json-server`.
+
+### 4. Use `npx` to Run JSON Server
+
+If `json-server` is correctly installed in your `node_modules`, you should be able to run it using `npx` (included with npm 5.2+ and higher versions) without needing it to be installed globally. Update your `start` script in `package.json`:
+
+```json
+"scripts": {
+  "start": "npx json-server --watch db.json --port 3000"
+}
+```
+
+With `npx`, npm installs the package if it’s not already installed locally, executes it, and then removes it. This avoids issues related to global installation conflicts and ensures you're using the correct version of `json-server` installed in your project.
+
+### 5. Global Installation (Optional)
+
+If you prefer to install `json-server` globally, you can do so:
+
+```bash
+npm install -g json-server
+```
+
+However, using `npx` is generally recommended for local development to avoid potential version conflicts between different projects.
+
+### 6. Restart Your Development Server
+
+After making these changes, restart your development server:
+
+```bash
+npm start
+```
+
+This should now correctly start JSON Server and allow you to access your mock APIs as defined in your `db.json` file.
+
+### Conclusion
+
+By following these steps, you should be able to resolve the "Cannot find module 'json-server'" error and successfully set up and run JSON Server for your project. Ensure all dependencies are correctly installed and configured according to your project's requirements.

@@ -1,0 +1,6 @@
+{
+    "/customRoutes": "/customRoutes",
+    "/customRouteById/:id": "/customRoutes/:id",
+    "/createCustomRoute": "/customRoutes"
+}
+  
